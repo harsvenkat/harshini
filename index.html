@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine’s Day ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #5a1a1a;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    .love-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .heart {
+      font-size: 3rem;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .gallery {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .gallery img {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+      background: #f7d6d6;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .gallery img.active {
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #ff4b5c;
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #e63946;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Happy Valentine’s Day</h1>
+    <h2 class="love-line">
+      To My Love <span class="heart">❤️</span>
+    </h2>
+
+    <div class="card">
+      <p>
+        My love, every single day with you feels like a blessing.
+        You are my best friend, my safe place, and my greatest love.
+        Thank you for being you — kind, strong, and endlessly supportive.
+      </p>
+      <p>
+        I choose you. Today, tomorrow, and always.
+      </p>
+      <p><strong>Forever yours ❤️</strong></p>
+    </div>
+
+    <div class="card">
+      <h2>Our Beautiful Memories</h2>
+      <div class="gallery">
+        <img src="images/image1.jpg" />
+        <img src="images/image2.jpg" />
+        <img src="images/image1.jpg" />
+        <img src="images/image2.jpg" />
+        <img src="images/image1.jpg" />
+        <img src="images/image2.jpg" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>A Little Love Note</h2>
+      <p id="loveNote">Click the button ❤️</p>
+      <button onclick="showLove()">Tap for a Surprise</button>
+    </div>
+
+    <footer>
+      Made with endless love 💕
+    </footer>
+  </div>
+
+  <script>
+    const notes = [
+      "I fall in love with you more every day.",
+      "You are my forever and always.",
+      "Life is better with you by my side.",
+      "You are my greatest adventure.",
+      "My heart is yours, now and forever."
+    ];
+    function showLove() {
+      const note = notes[Math.floor(Math.random() * notes.length)];
+      document.getElementById('loveNote').innerText = note;
+    }
+
+    const slides = document.querySelectorAll('.gallery img');
+    let current = 0;
+
+    slides[current].classList.add('active');
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 2000); // change every 3 seconds
+  </script>
+</body>
+
+</html>
