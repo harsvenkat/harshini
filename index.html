@@ -39,20 +39,20 @@
 
     .heart {
       font-size: 3rem;
-      animation: blink 1.5s infinite;
+      animation: pulse 1.5s infinite;
     }
 
-    @keyframes blink {
+    @keyframes pulse {
       0% {
-        opacity: 1;
+        transform: scale(1);
       }
 
       50% {
-        opacity: 0;
+        transform: scale(1.2);
       }
 
       100% {
-        opacity: 1;
+        transform: scale(1);
       }
     }
 
@@ -62,6 +62,28 @@
       padding: 30px;
       margin: 30px 0;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: reveal 1s ease forwards;
+    }
+
+    .card:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .card p {
@@ -74,6 +96,9 @@
       width: 100%;
       height: 300px;
       overflow: hidden;
+      background: #fff;
+      padding: 10px;
+      border-radius: 18px;
     }
 
     .gallery img {
@@ -87,10 +112,33 @@
       background: #f7d6d6;
       opacity: 0;
       transition: opacity 1s ease;
+      border-radius: 12px;
     }
 
     .gallery img.active {
       opacity: 1;
+      animation: memoryZoom 6s ease-in-out forwards;
+    }
+
+    @keyframes memoryZoom {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.9rem;
     }
 
     footer {
@@ -112,6 +160,55 @@
     button:hover {
       background: #e63946;
     }
+
+    .baby-footprints {
+      position: absolute;
+      bottom: 10px;
+      left: -60px;
+      font-size: 24px;
+      opacity: 0.4;
+      pointer-events: none;
+      animation: walkInside 14s linear forwards;
+    }
+
+    @keyframes walkInside {
+      0% {
+        transform: translateX(-60px);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.4;
+      }
+
+      85% {
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+    }
+
+    #dadReveal {
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 1.5s ease;
+    }
+
+    #dadReveal.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .dad-message {
+      font-size: 1.4rem;
+      line-height: 1.9;
+      color: #7a1f1f;
+    }
   </style>
 </head>
 
@@ -119,7 +216,8 @@
   <div class="container">
     <h1>Happy Valentine’s Day</h1>
     <h2 class="love-line">
-      To My Love <span class="heart">❤️</span>
+      To My Love and <span style="font-weight:600;">Dad-to-be</span>
+      <span class="heart">❤️</span>
     </h2>
 
     <div class="card">
@@ -143,6 +241,7 @@
         <img src="images/image2.jpg" />
         <img src="images/image1.jpg" />
         <img src="images/image2.jpg" />
+        <div class="caption" id="caption"></div>
       </div>
     </div>
 
@@ -151,7 +250,14 @@
       <p id="loveNote">Click the button ❤️</p>
       <button onclick="showLove()">Tap for a Surprise</button>
     </div>
-
+    <div class="card" id="dadReveal">
+      <h2>One More Thing…</h2>
+      <p class="dad-message">
+        You’re already an amazing dad 💙
+        Our little one is so lucky to have you.
+      </p>
+      <div class="baby-footprints">👣</div>
+    </div>
     <footer>
       Made with endless love 💕
     </footer>
@@ -165,21 +271,40 @@
       "You are my greatest adventure.",
       "My heart is yours, now and forever."
     ];
+
     function showLove() {
       const note = notes[Math.floor(Math.random() * notes.length)];
       document.getElementById('loveNote').innerText = note;
     }
 
     const slides = document.querySelectorAll('.gallery img');
+    const captions = [
+      "Our first unforgettable moment ❤️",
+      "Laughing until it hurt",
+      "Just us, always",
+      "A memory I treasure",
+      "My favorite place is you",
+      "Forever begins here"
+    ];
+
+    const captionEl = document.getElementById('caption');
     let current = 0;
 
     slides[current].classList.add('active');
+    captionEl.innerText = captions[0];
 
     setInterval(() => {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
-    }, 2000); // change every 3 seconds
+      captionEl.innerText = captions[current];
+    }, 2000);
+
+    setTimeout(() => {
+      document.getElementById('dadReveal').classList.add('show');
+      // document.querySelector('.baby-footprints').style.animationPlayState = 'paused';
+    }, 12000);
+
   </script>
 </body>
 
