@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Valentine’s Day ❤️</title>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -42,17 +41,12 @@
 </head>
 
 <body class="m-0 font-sans bg-gradient-to-br from-pink-300 to-rose-200 text-[#5a1a1a] text-center">
-
   <div class="max-w-[900px] mx-auto px-5 py-10">
-
     <h1 class="text-5xl mb-2">Happy Valentine’s Day</h1>
-
     <h2 class="flex justify-center items-center gap-2 font-normal mt-0">
       To My Love and Dad-to-be
       <span class="text-3xl animate-pulseSlow">❤️</span>
     </h2>
-
-    <!-- Card 1 -->
     <div
       class="bg-white rounded-[20px] p-[30px] my-[30px] shadow-xl opacity-0 translate-y-8 animate-reveal [animation-delay:0.2s]">
       <p class="text-[1.2rem] leading-[1.4]">
@@ -66,10 +60,9 @@
       <p class="mt-3"><strong>Forever yours ❤️</strong></p>
     </div>
 
-    <!-- Gallery -->
     <div
       class="bg-white rounded-[20px] p-[30px] my-[30px] shadow-xl opacity-0 translate-y-8 animate-reveal [animation-delay:0.4s]">
-      <h2 class="font-normal mt-0">Our Beautiful Memories</h2>
+      <h2 class="font-medium mt-0 pb-[20px]">Our Beautiful Memories</h2>
       <div id="gallery" class="relative w-full h-[300px] overflow-hidden bg-white p-[10px] rounded-[18px]">
         <img src="images/image1.jpg"
           class="absolute inset-0 w-full h-full object-contain bg-[#f7d6d6] opacity-0 transition-opacity duration-1000 rounded-[12px]" />
@@ -113,37 +106,29 @@
           class="absolute inset-0 w-full h-full object-contain bg-[#f7d6d6] opacity-0 transition-opacity duration-1000 rounded-[12px]" />
         <img src="images/image21.jpg"
           class="absolute inset-0 w-full h-full object-contain bg-[#f7d6d6] opacity-0 transition-opacity duration-1000 rounded-[12px]" />
-
         <div id="caption"
           class="absolute bottom-[15px] left-1/2 -translate-x-1/2 bg-white/85 px-[18px] py-[8px] rounded-[20px] text-[0.9rem]">
         </div>
       </div>
     </div>
 
-    <!-- Love Note -->
     <div
       class="bg-white rounded-[20px] p-[30px] my-[30px] shadow-xl opacity-0 translate-y-8 animate-reveal [animation-delay:0.6s]">
-      <h2 class="font-normal mt-0">A Little Love Note</h2>
+      <h2 class="font-medium mt-0 pb-[20px]">A Little Love Note</h2>
       <p id="loveNote" class="text-[1.2rem] leading-[1.4]">Click the button ❤️</p>
-
       <button onclick="showLove()"
         class="bg-[#ff4b5c] hover:bg-[#e63946] text-white px-[25px] py-[15px] text-[1rem] rounded-[30px] mt-5 transition">
         Tap for a Surprise
       </button>
     </div>
 
-    <!-- Dad Section -->
     <div id="dadReveal"
       class="relative overflow-hidden bg-white rounded-[20px] p-[30px] my-[30px] shadow-xl opacity-0 scale-95 transition-all duration-[1500ms]">
-
       <h2 class="font-normal mt-0">One More Thing…</h2>
-
       <div class="grid md:grid-cols-[1fr_1.2fr] gap-[25px] items-center mt-5">
-
         <div class="w-full rounded-[16px] shadow-lg overflow-hidden">
           <img src="images/baby.jpg" class="w-full h-auto block rounded-[16px]" alt="Dad and baby love">
         </div>
-
         <div class="text-left md:text-left text-center">
           <p class="text-[1.3rem] text-[#7a1f1f]">
             Five months of our tiny miracle growing inside me, and my heart overflows with love.💙<br><br>
@@ -156,7 +141,7 @@
         👣
       </div>
     </div>
-    <footer class="mt-10 text-[1rem]">
+    <footer class="font-medium mt-10 text-[1rem]">
       Made with endless love 💕
     </footer>
   </div>
