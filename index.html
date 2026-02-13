@@ -59,6 +59,30 @@
       transform: rotate(45deg);
       animation: floatHearts linear infinite;
     }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-120px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      animation: sparkleFloat 2s ease-out forwards;
+      font-size: 20px;
+      z-index: 50;
+    }
   </style>
 
 
@@ -151,7 +175,7 @@
     </div>
 
     <div id="dadReveal"
-      class="relative overflow-hidden bg-white rounded-[20px] p-[30px] my-[30px] shadow-xl opacity-0 scale-95 transition-all duration-[1500ms]">
+      class="relative overflow-visible bg-white rounded-[20px] p-[30px] my-[30px] shadow-xl opacity-0 scale-95 transition-all duration-[1500ms]">
       <h2 class="font-normal mt-0">One More Thing…</h2>
       <div class="grid md:grid-cols-[1fr_1.2fr] gap-[25px] items-center mt-5">
         <div class="w-full rounded-[16px] shadow-lg overflow-hidden">
@@ -224,11 +248,31 @@
       captionEl.innerText = captions[current];
     }, 2000);
 
+    function createSparkle() {
+      const dad = document.getElementById("dadReveal");
+
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = ["✨", "💫", "⭐"][Math.floor(Math.random() * 3)];
+
+      sparkle.style.left = Math.random() * 100 + "%";
+      sparkle.style.top = Math.random() * 100 + "%";
+
+      sparkle.style.animationDuration = (Math.random() * 1 + 1.5) + "s";
+
+      dad.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 2000);
+    }
+
     setTimeout(() => {
       const dad = document.getElementById('dadReveal');
       dad.classList.remove('opacity-0', 'scale-95');
       dad.classList.add('opacity-100', 'scale-100');
-    }, 12000);
+      setInterval(createSparkle, 400);
+    }, 30000);
 
     const heartContainer = document.getElementById("hearts-container");
 
